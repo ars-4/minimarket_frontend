@@ -15,6 +15,12 @@
       <FancyBanner :product="banners[0]" />
     </div>
 
+    <div class="section products">
+      <div class="product" v-for="product in products" :key="product">
+        <ClassicCard :product="product" />
+      </div>
+    </div>
+
     <div class="section banner">
       <FancyBanner :product="banners[1]" />
     </div>
@@ -42,6 +48,15 @@
   display: flex;
   align-items: flex-end;
 }
+.section.products {
+  margin: 8px 1.5%;
+  display: flex;
+  justify-content: flex-start;
+}
+.section.products .product {
+  margin: 8px 8px;
+  cursor: pointer;
+}
 @media screen and (max-width: 760px) {
   .section.categories .card-300 {
     width: 100%;
@@ -53,8 +68,11 @@
     width: 100%;
     max-height: 10vh;
     overflow: hidden !important;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
+  }
+  .section.products {
+    flex-direction: column;
   }
 }
 </style>
@@ -63,6 +81,7 @@
 import LandingHeader from '@/components/LandingHeader'
 import FancyCard from '@/components/FancyCard'
 import FancyBanner from '@/components/FancyBanner'
+import ClassicCard from '@/components/ClassicCard'
 
 import NikeShoesImage from '@/assets/static/images/nike_shoes_green.png'
 import JacketRedImage from '@/assets/static/images/jacket_red.png'
@@ -89,6 +108,10 @@ export default {
       banners: [
         {'pre1': '20% OFF', 'heading': 'Listen Beats', 'pre2': '15 Nov To 7 Dec', 'image': red_headset, 'bg': '#B7000A', 'fg': '#fff'},
         {'pre1': '20% OFF', 'heading': 'Happy Hours', 'pre2': '15 Nov To 7 Dec', 'image': black_wrist_watch, 'bg': '#242424', 'fg': '#fff'}
+      ],
+      products: [
+        { title: 'Google VR Pro', image: vrheadsetImage, badge: 'New', compare: '$250.00', price: '$200.00'},
+        { title: 'ASUS ROG Zephyrus', image: laptopImage, price: '$200.00'}
       ]
     }
   },
@@ -96,7 +119,8 @@ export default {
   components: {
     LandingHeader,
     FancyCard,
-    FancyBanner
+    FancyBanner,
+    ClassicCard
     }
 }
 </script>
