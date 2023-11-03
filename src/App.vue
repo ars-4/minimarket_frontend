@@ -1,30 +1,61 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div id="main">
+    <div id="background">
+      <background-scene />
+    </div>
+    <div id="foreground">
+      <div class="navbar">
+        <div class="brand">
+          <div class="content">
+            <h3>PHLOX</h3>
+            <span>Buy Everlasting Products</span>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a href="#" class="nav-link">Home</a>
+          <a href="#" class="nav-link">Collections</a>
+          <a href="#" class="nav-link">Catalogue</a>
+        </div>
+        <div class="nav-icons">
+          <a href="#" class="icon icon-search"></a>
+          <a href="#" class="icon icon-user"></a>
+          <a href="#" class="icon icon-cart-bag-outline"></a>
+        </div>
+      </div>
+      <router-view />
+    </div>
+  </div>
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+#main {
+  width: 100%;
+  height: 100vh;
+  position: relative;
 }
 
-nav {
-  padding: 30px;
+#main #background {
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+#main #foreground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 </style>
+
+<script>
+import BackgroundScene from '@/components/BackgroundScene.vue'
+export default {
+
+  components: {
+    'background-scene': BackgroundScene
+  }
+
+}
+
+</script>
