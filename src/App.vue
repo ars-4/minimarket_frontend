@@ -12,8 +12,8 @@
           </div>
         </div>
         <div class="nav-links">
-          <a href="#" class="nav-link">Home</a>
-          <a href="#" class="nav-link">Collections</a>
+          <a href="/" class="nav-link">Home</a>
+          <a href="/products/all/" class="nav-link">Collections</a>
           <a href="#" class="nav-link">Catalogue</a>
         </div>
         <div class="nav-icons">
@@ -23,6 +23,7 @@
         </div>
       </div>
       <router-view />
+      <footer-component />
     </div>
   </div>
 </template>
@@ -50,10 +51,12 @@
 
 <script>
 import BackgroundScene from '@/components/BackgroundScene.vue'
+import FooterComponent from '@/components/FooterComponent.vue'
 export default {
 
   components: {
-    'background-scene': BackgroundScene
+    'background-scene': BackgroundScene,
+    'footer-component': FooterComponent
   }
 
 }
