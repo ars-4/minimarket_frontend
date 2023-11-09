@@ -1,6 +1,6 @@
 <template>
 
-    <div class="classic-card">
+    <div class="classic-card" @click="$router.push(`/product/${product.id}`)">
         <span v-if="product.badge" class="badge">{{ product.badge }}</span>
         <div class="image">
             <img :src="product.image" alt="image">

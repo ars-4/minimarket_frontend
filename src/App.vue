@@ -12,17 +12,19 @@
           </div>
         </div>
         <div class="nav-links">
-          <a href="/" class="nav-link">Home</a>
-          <a href="/products/all/" class="nav-link">Collections</a>
+          <a @click="$router.push('/')" class="nav-link">Home</a>
+          <a @click="$router.push('/products/all/')" class="nav-link">Collections</a>
           <a href="#" class="nav-link">Catalogue</a>
         </div>
         <div class="nav-icons">
           <a href="#" class="icon icon-search"></a>
           <a href="#" class="icon icon-user"></a>
-          <a href="#" class="icon icon-cart-bag-outline"></a>
+          <a @click="$router.push('/cart/')" class="icon icon-cart-bag-outline">
+            <sup>{{ cart_count }}</sup>
+          </a>
         </div>
       </div>
-      <router-view />
+      <router-view @updateCartCount="updateCartCount()" />
       <footer-component />
     </div>
   </div>
@@ -54,10 +56,28 @@ import BackgroundScene from '@/components/BackgroundScene.vue'
 import FooterComponent from '@/components/FooterComponent.vue'
 export default {
 
+  data() {
+    return {
+      cart_count: 0
+    }
+  },
+
   components: {
     'background-scene': BackgroundScene,
     'footer-component': FooterComponent
-  }
+  },
+
+  methods: {
+    updateCartCount() {
+      this.cart_count = this.$cart.state.items.length;
+      console.log(this.$cart.state.items.length)
+    }
+  },
+
+  mounted() {
+    this.updateCartCount()
+  },
+
 
 }
 

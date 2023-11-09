@@ -90,8 +90,8 @@ export default {
     data() {
         return {
             products: [
-                { title: 'Google VR Pro', image: vrheadsetImage, badge: 'New', compare: '$250.00', price: '$200.00' },
-                { title: 'ASUS ROG Zephyrus', image: laptopImage, price: '$200.00' }
+                { id: 1, title: 'Google VR Pro', image: vrheadsetImage, badge: 'New', compare: '$250.00', price: '$200.00' },
+                { id: 2, title: 'ASUS ROG Zephyrus', image: laptopImage, price: '$200.00' }
             ]
         }
     },
