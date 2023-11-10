@@ -4,7 +4,8 @@
       <background-scene />
     </div>
     <div id="foreground">
-      <div class="navbar">
+      <div class="navbar" ref="navbar">
+        <span class="icon icon-menu" ref="iconmenu"></span>
         <div class="brand">
           <div class="content">
             <h3>PHLOX</h3>
@@ -71,11 +72,15 @@ export default {
     updateCartCount() {
       this.cart_count = this.$cart.state.items.length;
       console.log(this.$cart.state.items.length)
+    },
+    toggleNavbar() {
+      this.$refs.navbar.classList.toggle('visible')
     }
   },
 
   mounted() {
-    this.updateCartCount()
+    this.updateCartCount();
+    this.$refs.iconmenu.addEventListener('click', this.toggleNavbar)
   },
 
 

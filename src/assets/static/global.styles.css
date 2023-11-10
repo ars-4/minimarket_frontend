@@ -28,6 +28,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: 0.5s all;
 }
 .navbar a {
     text-decoration: none;
@@ -74,6 +75,14 @@ body {
     transform: translateX(-20%);
 }
 
+.navbar .icon-menu {
+    position: absolute;
+    top: 12px;
+    left: 24px;
+    font-size: 24px;
+    display: none;
+}
+
 .navbar .nav-links,
 .navbar .nav-icons {
     display: flex;
@@ -93,6 +102,15 @@ body {
     .navbar {
         height: 40px;
         overflow: hidden;
+        transition: 0.5s all;
+    }
+    .navbar.visible {
+        height: auto;
+        overflow: hidden;
+        transition: 0.5s all;
+    }
+    .navbar .icon-menu {
+        display: inline-block;
     }
     .navbar,
     .navbar .nav-links {

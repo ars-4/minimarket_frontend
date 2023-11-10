@@ -13,7 +13,7 @@
                     <span class="title">Lorem Ipsum Dolor</span>
                     <span class="quantity">{{ item.qty }}</span>
                     <span class="price">$ 1099.00</span>
-                    <span class="delete">&times;</span>
+                    <span class="delete" @click="removeItem(item.id)">&times;</span>
                 </div>
             </div>
             <div class="item sub-footer">
@@ -63,7 +63,7 @@
                         </label>
                         <label @click="payment(false)">
                             <input type="radio" name="1">
-                            &nbsp;<span > Payoneer</span>
+                            &nbsp;<span> Payoneer</span>
                         </label>
                     </div>
                 </div>
@@ -152,6 +152,8 @@
 
 .cart-view .cart-items .items .item span.delete {
     text-align: center;
+    font-size: 24px;
+    cursor: pointer;
 }
 
 .cart-view .cart-items .items .item.header {
@@ -217,7 +219,8 @@
 }
 
 .cart-view .payment-info .personal .form-group input,
-.cart-view .payment-info .payoneer .form-group input {
+.cart-view .payment-info .payoneer .form-group input,
+.cart-view .payment-info .payment .card .front-view input {
     width: 100%;
 }
 
@@ -232,34 +235,65 @@
     margin-right: 12px;
 }
 
-.cart-view .payment-info .payment .card .front-view input {
-    width: 100%;
-}
 .cart-view .payment-info .payment .card .input-group {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 110%;
 }
+
 .cart-view .payment-info .payment .card .input-group input,
 .cart-view .payment-info .payment .card .input-group select {
     width: 34%;
 }
+
 .cart-view .payment-info .payment .card .input-group select:nth-child(2) {
     margin: 0px 4px;
 }
 
-.cart-view .payment-info > .btn {
+.cart-view .payment-info>.btn {
     margin-top: 32px;
     width: 110%;
     padding: 24px;
     border-radius: 14px;
-    border:none;
-    outline:none;
+    border: none;
+    outline: none;
     background-color: #B7000A;
     color: #fff;
     font-weight: bolder;
     font-size: 24px;
+}
+
+@media screen and (max-width: 768px) {
+    .cart-view {
+        flex-direction: column;
+    }
+
+    .cart-view .cart-items {
+        width: 100%;
+    }
+
+    .cart-view .cart-items .sub-footer>div,
+    .cart-view .cart-items .footer>div {
+        width: 40%;
+    }
+
+    .cart-view .payment-info {
+        width: 90%;
+        margin: 3% 0px;
+        border: none;
+    }
+
+    .cart-view .payment-info .personal .form-group input,
+    .cart-view .payment-info .payoneer .form-group input,
+    .cart-view .payment-info .payment .card .front-view input {
+        width: 90%;
+    }
+    .cart-view .payment-info .payment .card .input-group,
+    .cart-view .payment-info>.btn {
+        width: 100%;
+    }
+
 }
 </style>
 
@@ -275,6 +309,9 @@ export default {
     methods: {
         payment(value) {
             this.card = value
+        },
+        removeItem(id) {
+            this.$store.commit('removeItem', id)
         }
     }
 }

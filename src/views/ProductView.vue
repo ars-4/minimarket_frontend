@@ -174,6 +174,19 @@
     opacity: 0.7;
     transition: 0.5s all;
 }
+
+@media screen and (max-width: 768px) {
+    .product-view .body {
+        flex-direction: column;
+    }
+    .product-view .body > div {
+        width: 100%;
+    }
+    .product-view .body > div.image-container{
+        margin-left: 0;
+    }
+    
+}
 </style>
 
 <script>
